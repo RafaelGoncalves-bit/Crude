@@ -21,9 +21,3 @@ Este projeto consiste em um sistema CRUD para gerenciamento de quizzes, desenvol
 - **HTML5** para a estruturação das páginas web  
 - **CSS3** para o estilo e layout responsivo  
 - **PHP** para a lógica do servidor e manipulação do banco de dados
-
-## Instalação
-
-1. Clone este repositório:  
-```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git

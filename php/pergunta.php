@@ -24,7 +24,8 @@ $num = intval($_SESSION['pergunta_atual']); // Garante que seja número inteiro
 $sql = "SELECT * FROM perguntas WHERE id = $num";
 
 $res = mysqli_query($conn, $sql);
- 
+
+
 if (!$res || mysqli_num_rows($res) == 0) {
 
     // Se não houver mais perguntas, redireciona para resultado

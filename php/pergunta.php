@@ -1,9 +1,10 @@
 <html>
     <head>
-    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     </head>
-</html>
+    <body class="preto3">
+
 
 <?php
 
@@ -40,20 +41,27 @@ $pergunta = mysqli_fetch_assoc($res);
 
 ?>
 
-<html>
+
     <main>
     <div class="container meio">
     <div class="text-center">
-<h3>Pergunta <?= $num ?></h3>
+<h2>Pergunta <?= $num ?>:</h2>
 </div>
-<form method="post" action="verifica.php">
-<p><?= $pergunta['pergunta'] ?></p>
-<label><input type="radio" name="resposta" value="a" required> <?= $pergunta['alternativa_a'] ?></label><br>
-<label><input type="radio" name="resposta" value="b" required> <?= $pergunta['alternativa_b'] ?></label><br>
-<label><input type="radio" name="resposta" value="c" required> <?= $pergunta['alternativa_c'] ?></label><br>
-<label><input type="radio" name="resposta" value="d" required> <?= $pergunta['alternativa_d'] ?></label><br>
-<button type="submit">Enviar Resposta</button>
+<form class="text-center" method="post" action="verifica.php">
+<h3 class="text-center"><?= $pergunta['pergunta'] ?></h3>
+<div class="margem">
+<div class="flex gap-2">
+<button type="submit" name="resposta" value="a" class="btn btn-primary w-100 mb-2"><p>A. <?= $pergunta['alternativa_a'] ?></p></button>
+<button type="submit" name="resposta" value="b" class="btn btn-success w-100 mb-2"><p>B. <?= $pergunta['alternativa_b'] ?></p></button>
+</div>
+<div class="flex gap-2">
+<button type="submit" name="resposta" value="c" class="btn btn-danger w-100 mb-2"><p>C. <?= $pergunta['alternativa_c'] ?></p></button>
+<button type="submit" name="resposta" value="d" class="btn btn-warning w-100 mb-2"><p>D. <?= $pergunta['alternativa_d'] ?></p></button>
+<!-- <button class="botao-pequeno" type="submit">Enviar Resposta</button> -->
+ </div>
+ </div>
 </form>
 </div>
 </main>
+</body>
 </html>

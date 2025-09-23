@@ -20,11 +20,11 @@ $pontos = $_SESSION['pontos'];
             <div class="text-center">
                 <form method="post" action="salvar_pontuacao.php">
                     <label>Digite seu nome:</label>
-                    <input class="" type="text" name="nome" required>
+                    <input class="nome" type="text" name="nome" required>
                     <input type="hidden" name=pontuacao value="<?= $pontos ?>">
-                    <button type="submit" class="btn btn-success">Salvar no Ranking</button>
+                    <button type="submit" class="btn btn-success botao-pequeno">Salvar no Ranking</button>
                 </form>
-                <br><a href="ranking.php">Ver Ranking</a>
+                <br><a class="link-offset-2 link-underline link-underline-opacity-0 link-light" href="ranking.php">Ver Ranking</a>
             </div>
 
         </div>

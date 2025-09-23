@@ -25,6 +25,7 @@ $pontos = $_SESSION['pontos'];
                     <button type="submit" class="btn btn-success botao-pequeno">Salvar no Ranking</button>
                 </form>
                 <br><a class="link-offset-2 link-underline link-underline-opacity-0 link-light" href="ranking.php">Ver Ranking</a>
+                <a href="../php/iniciar_quiz.php" class="btn btn-secondary">Refazer Quiz</a>
             </div>
 
         </div>

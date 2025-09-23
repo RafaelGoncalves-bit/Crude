@@ -8,19 +8,25 @@ $res = mysqli_query($conn, $sql);
 
 ?>
  <html>
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="../css/estilo.css">
     
-    <body class ="preto">
+</head>
+    <body class="preto3">
     <main>
-        <div class="text-center">
-<h2>Ranking - Top 10</h2>
-<table border="1">
+
+    <div class="meio-ranking">
+<h2 style="text-align: center; margin-bottom: 5%;">Ranking - Top 10</h2>
+<table style="color: white;" border="1">
 <tr>
 <th>Posição</th>
 <th>Nome</th>
 <th>Pontuação</th>
 <th>Data</th>
 </tr>
-</div>
 
 
 <?php
@@ -44,6 +50,7 @@ while($row = mysqli_fetch_assoc($res)) {
 </table>
  
 <a href="../indes.html">Voltar ao Início</a>
+</div>
 </main>
 </body>
  </html>

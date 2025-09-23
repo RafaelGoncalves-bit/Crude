@@ -8,6 +8,10 @@ body.preto {
     background-image: url("../img/aa.png");
 }
 
+.preto3 {
+    background-color: rgb(22, 22, 22);
+}
+
 main {
     color: white;
 }
@@ -15,6 +19,7 @@ main {
 .margem {
     margin-top: 5%;
 }
+
 
 .meio {
     background-color: rgb(36, 39, 33);
@@ -25,6 +30,19 @@ main {
     margin-bottom: 10%;
     border: 1px solid white;
     border-radius: 20px;
+}
+
+.meio-ranking{
+    background-color: rgb(36, 39, 33);
+    padding: 5%;
+    padding-top: 5%;
+    padding-bottom: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    border: 1px solid white;
+    border-radius: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .botao-quiz {

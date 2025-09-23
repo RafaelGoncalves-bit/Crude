@@ -48,10 +48,10 @@ $pergunta = mysqli_fetch_assoc($res);
 </div>
 <form method="post" action="verifica.php">
 <p><?= $pergunta['pergunta'] ?></p>
-<label><input type="radio" name="resposta" value="a"> <?= $pergunta['alternativa_a'] ?></label><br>
-<label><input type="radio" name="resposta" value="b"> <?= $pergunta['alternativa_b'] ?></label><br>
-<label><input type="radio" name="resposta" value="c"> <?= $pergunta['alternativa_c'] ?></label><br>
-<label><input type="radio" name="resposta" value="d"> <?= $pergunta['alternativa_d'] ?></label><br>
+<label><input type="radio" name="resposta" value="a" required> <?= $pergunta['alternativa_a'] ?></label><br>
+<label><input type="radio" name="resposta" value="b" required> <?= $pergunta['alternativa_b'] ?></label><br>
+<label><input type="radio" name="resposta" value="c" required> <?= $pergunta['alternativa_c'] ?></label><br>
+<label><input type="radio" name="resposta" value="d" required> <?= $pergunta['alternativa_d'] ?></label><br>
 <button type="submit">Enviar Resposta</button>
 </form>
 </div>

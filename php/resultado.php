@@ -26,7 +26,7 @@ $pontos = isset($_SESSION['pontos']) ? $_SESSION['pontos'] : 0;
             </form>
             <br>
             <a class="link-offset-2 link-underline link-underline-opacity-0 link-light" href="ranking.php">Ver Ranking</a>
-            <a href="../php/iniciar_quiz.php" class="btn btn-secondary">Refazer Quiz</a>
+            <a href="./iniciar_quiz.php" class="btn btn-secondary">Refazer Quiz</a>
         </div>
     </div>
 </main>

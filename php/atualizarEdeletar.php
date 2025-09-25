@@ -1,64 +1,117 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "seu_banco");
+$conn = new mysqli("localhost", "root", "", "quiz");
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}
 
-// Atualiza se foi enviado um POST
+// Atualizar pergunta
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $id = $_POST['id'];
-  $pergunta = $_POST['pergunta'];
-  $a = $_POST['opcao_a'];
-  $b = $_POST['opcao_b'];
-  $c = $_POST['opcao_c'];
-  $d = $_POST['opcao_d'];
-  $resposta = strtoupper($_POST['resposta_correta']);
+    $id = intval($_POST['id']);
+    $pergunta = $conn->real_escape_string($_POST['pergunta']);
+    $a = $conn->real_escape_string($_POST['alternativa_a']);
+    $b = $conn->real_escape_string($_POST['alternativa_b']);
+    $c = $conn->real_escape_string($_POST['alternativa_c']);
+    $d = $conn->real_escape_string($_POST['alternativa_d']);
+    $correta = strtoupper($conn->real_escape_string($_POST['correta']));
 
-  $sql = "UPDATE quiz SET 
-    pergunta = '$pergunta',
-    opcao_a = '$a',
-    opcao_b = '$b',
-    opcao_c = '$c',
-    opcao_d = '$d',
-    resposta_correta = '$resposta'
-    WHERE id = $id";
+    $sql = "UPDATE perguntas SET 
+        pergunta = '$pergunta',
+        alternativa_a = '$a',
+        alternativa_b = '$b',
+        alternativa_c = '$c',
+        alternativa_d = '$d',
+        correta = '$correta'
+        WHERE id = $id";
 
-  $conn->query($sql);
-  echo "<p style='color:purple;'>Pergunta atualizada!</p>";
+    if ($conn->query($sql) === TRUE) {
+        echo "<div class='alert alert-success'>Pergunta atualizada!</div>";
+    } else {
+        echo "<div class='alert alert-danger'>Erro ao atualizar: " . $conn->error . "</div>";
+    }
 }
 
+// Deletar pergunta
 if (isset($_GET['delete'])) {
-  $id = $_GET['delete'];
-  $conn->query("DELETE FROM quiz WHERE id = $id");
-  echo "<p style='color:green;'>Pergunta deletada!</p>";
+    $id = intval($_GET['delete']);
+    if ($conn->query("DELETE FROM perguntas WHERE id = $id") === TRUE) {
+        echo "<div class='alert alert-success'>Pergunta deletada!</div>";
+    } else {
+        echo "<div class='alert alert-danger'>Erro ao deletar: " . $conn->error . "</div>";
+    }
 }
 
-// Perguntas
-$result = $conn->query("SELECT * FROM quiz");
-
-while ($row = $result->fetch_assoc()) {
+$result = $conn->query("SELECT * FROM perguntas");
 ?>
-  <form method="POST" style="margin-bottom: 30px;">
-    <input type="hidden" name="id" value="<?= $row['id'] ?>">
-    
-    <label>Pergunta:</label><br>
-    <textarea name="pergunta"><?= $row['pergunta'] ?></textarea><br>
 
-    <label>Opção A:</label>
-    <input type="text" name="opcao_a" value="<?= $row['opcao_a'] ?>"><br>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Editar Perguntas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container my-4">
+    <h1 class="mb-4 text-center">Gerenciar Perguntas do Quiz</h1>
 
-    <label>Opção B:</label>
-    <input type="text" name="opcao_b" value="<?= $row['opcao_b'] ?>"><br>
+    <?php
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+    ?>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <form method="POST">
+                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Pergunta:</label>
+                        <textarea class="form-control" name="pergunta" rows="3"><?= htmlspecialchars($row['pergunta']) ?></textarea>
+                    </div>
 
-    <label>Opção C:</label>
-    <input type="text" name="opcao_c" value="<?= $row['opcao_c'] ?>"><br>
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label class="form-label">Opção A:</label>
+                            <input type="text" class="form-control" name="alternativa_a" value="<?= htmlspecialchars($row['alternativa_a']) ?>">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Opção B:</label>
+                            <input type="text" class="form-control" name="alternativa_b" value="<?= htmlspecialchars($row['alternativa_b']) ?>">
+                        </div>
+                    </div>
 
-    <label>Opção D:</label>
-    <input type="text" name="opcao_d" value="<?= $row['opcao_d'] ?>"><br>
+                    <div class="row mb-3">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label class="form-label">Opção C:</label>
+                            <input type="text" class="form-control" name="alternativa_c" value="<?= htmlspecialchars($row['alternativa_c']) ?>">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Opção D:</label>
+                            <input type="text" class="form-control" name="alternativa_d" value="<?= htmlspecialchars($row['alternativa_d']) ?>">
+                        </div>
+                    </div>
 
-    <label>Resposta Correta:</label>
-    <input type="text" name="resposta_correta" value="<?= $row['resposta_correta'] ?>"><br><br>
+                    <div class="mb-3 col-md-3">
+                        <label class="form-label">Resposta Correta (A, B, C ou D):</label>
+                        <input type="text" class="form-control" name="correta" maxlength="1" value="<?= htmlspecialchars($row['correta']) ?>">
+                    </div>
 
-    <button type="submit">Salvar Alterações</button>
-    <a href="?delete=<?= $row['id'] ?>" onclick="return confirm('Cuidado pra nao fazer caquinha tem certeza que quer excluir?')">Excluir</a>
-  </form>
-<?php
-}
-?>
+                    <button type="submit" class="btn btn-primary me-2">Salvar Alterações</button>
+                    <a href="?delete=<?= $row['id'] ?>" 
+                       class="btn btn-danger" 
+                       onclick="return confirm('Tem certeza que quer excluir esta pergunta?')">
+                       Excluir
+                    </a>
+                </form>
+            </div>
+        </div>
+    <?php
+        }
+    } else {
+        echo "<p class='text-center'>Nenhuma pergunta encontrada.</p>";
+    }
+
+    $conn->close();
+    ?>
+</div>
+</body>
+</html>

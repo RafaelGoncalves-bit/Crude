@@ -1,14 +1,9 @@
 <?php
 session_start();
-session_unset();
-session_destroy();
+session_unset(); // limpa a sessão
 
-// Reinicia a sessão para começar do zero
-session_start();
 $_SESSION['quiz_iniciado'] = true;
 $_SESSION['pergunta_atual'] = 1;
 
-// Redireciona para a primeira pergunta
-echo "Redirecionando para pergunta.php...";
+header("Location: ./pergunta.php"); // ← Caminho corrigido
 exit;
-

@@ -1,19 +1,19 @@
-CREATE DATABASE quiz;
+CREATE OR REPLACE DATABASE quiz;
  
  
-CREATE TABLE perguntas (
+CREATE OR REPLACE TABLE perguntas (
 id INT AUTO_INCREMENT PRIMARY KEY,
 pergunta TEXT NOT NULL,
 alternativa_a VARCHAR(255),
 alternativa_b VARCHAR(255),
 alternativa_c VARCHAR(255),
 alternativa_d VARCHAR(255),
-correta CHAR(1)
+correta CHAR(1) NOT NULL
 );
  
  
  
-CREATE TABLE ranking (
+CREATE OR REPLACE TABLE ranking (
 id INT AUTO_INCREMENT PRIMARY KEY,
 nome VARCHAR(100) NOT NULL,
 pontuacao INT NOT NULL,

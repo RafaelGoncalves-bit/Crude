@@ -4,7 +4,7 @@ session_start();
 
 include('conexao.php');
 
-$resposta = strtoupper($_POST['resposta']); // <-- Padroniza para MAIÚSCULO
+$resposta = strtolower($_POST['resposta']); 
 
 $num = $_SESSION['pergunta_atual'];
 
@@ -13,9 +13,9 @@ $res = mysqli_query($conn, $sql);
 
 if ($res && mysqli_num_rows($res) > 0) {
 
-    $correta = mysqli_fetch_assoc($res)['correta'];
+    $correta = strtolower()mysqli_fetch_assoc($res)['correta'];
 
-    if ($resposta === $correta) { // compara já padronizado
+    if ($resposta === $correta) { 
         if (!isset($_SESSION['pontos'])) {
             $_SESSION['pontos'] = 0;
         }

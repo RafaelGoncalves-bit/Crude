@@ -2,14 +2,13 @@
 
 ## Descrição
 
-Este projeto consiste em um sistema CRUD para gerenciamento de quizzes, desenvolvido com as tecnologias HTML, CSS e PHP. O sistema possibilita a criação, visualização, atualização e exclusão de quizzes de forma eficiente e organizada.
+Este projeto consiste em um sistema CRUD para gerenciamento de quiz. O sistema possibilita a criação, visualização, atualização e exclusão do quiz.
 
 ## Funcionalidades
 
-- Criação de novos quizzes com título e perguntas associadas  
-- Listagem completa dos quizzes cadastrados  
-- Edição de quizzes existentes, incluindo seus respectivos conteúdos  
-- Exclusão segura de quizzes
+- Editar Perguntas e Respostas
+- Adicionar mais perguntas
+- Exclusão segura das perguntas
 
 ## Tecnologias Utilizadas
 

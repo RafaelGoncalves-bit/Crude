@@ -40,18 +40,18 @@ $pergunta = mysqli_fetch_assoc($res);
         <h3 class="text-center"><?= htmlspecialchars($pergunta['pergunta']) ?></h3>
         <div class="margem">
             <div class="flex gap-2">
-                <button type="submit" name="resposta" value="a" class="btn btn-primary w-100 mb-2">
+                <button type="submit" name="resposta" value="A" class="btn btn-primary w-100 mb-2">
                     <p>A. <?= htmlspecialchars($pergunta['alternativa_a']) ?></p>
                 </button>
-                <button type="submit" name="resposta" value="b" class="btn btn-success w-100 mb-2">
+                <button type="submit" name="resposta" value="B" class="btn btn-success w-100 mb-2">
                     <p>B. <?= htmlspecialchars($pergunta['alternativa_b']) ?></p>
                 </button>
             </div>
             <div class="flex gap-2">
-                <button type="submit" name="resposta" value="c" class="btn btn-danger w-100 mb-2">
+                <button type="submit" name="resposta" value="C" class="btn btn-danger w-100 mb-2">
                     <p>C. <?= htmlspecialchars($pergunta['alternativa_c']) ?></p>
                 </button>
-                <button type="submit" name="resposta" value="d" class="btn btn-warning w-100 mb-2">
+                <button type="submit" name="resposta" value="D" class="btn btn-warning w-100 mb-2">
                     <p>D. <?= htmlspecialchars($pergunta['alternativa_d']) ?></p>
                 </button>
             </div>

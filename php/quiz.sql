@@ -7,7 +7,7 @@ pergunta TEXT NOT NULL,
 alternativa_a VARCHAR(255),
 alternativa_b VARCHAR(255),
 alternativa_c VARCHAR(255),
-alternativa_d VARCHAR
+alternativa_d VARCHAR(255),
 correta CHAR(1)
 );
  

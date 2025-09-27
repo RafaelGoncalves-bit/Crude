@@ -162,6 +162,7 @@ $result = $conn->query("SELECT * FROM perguntas");
                        Excluir
                     </a>
                 </form>
+            
             </div>
         </div>
     <?php
@@ -172,6 +173,14 @@ $result = $conn->query("SELECT * FROM perguntas");
 
     $conn->close();
     ?>
+
+
 </div>
+
+<!-- Botão Voltar fixo no canto inferior esquerdo -->
+<form method="POST" action="resultado.php" style="position: fixed; bottom: 20px; left: 20px; z-index: 999;">
+    <button type="submit" class="btn btn-info">Voltar</button>
+</form>
+
 </body>
 </html>

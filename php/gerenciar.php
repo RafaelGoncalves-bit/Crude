@@ -69,7 +69,7 @@ $result = $conn->query("SELECT * FROM perguntas");
     <title>Gerenciar Perguntas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body class="bg-dark text-white">
 <div class="container my-4">
     <h1 class="mb-4 text-center">Gerenciar Perguntas do Quiz</h1>
 
